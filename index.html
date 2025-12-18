@@ -389,6 +389,157 @@
             font-weight: 300;
         }
 
+        /* Floating Yellow Dot */
+        .personality-dot {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 0 30px rgba(250, 204, 21, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .personality-dot::after {
+            content: '?';
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--bg-main);
+        }
+
+        .personality-dot:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 50px rgba(250, 204, 21, 0.7);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 30px rgba(250, 204, 21, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(250, 204, 21, 0.8);
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            border: 2px solid var(--accent);
+            box-shadow: 0 20px 80px rgba(250, 204, 21, 0.3);
+            animation: slideUp 0.4s ease;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal-content h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hobby-list {
+            list-style: none;
+        }
+
+        .hobby-item {
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            background: rgba(250, 204, 21, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .hobby-item:hover {
+            background: rgba(250, 204, 21, 0.08);
+            transform: translateX(5px);
+        }
+
+        .hobby-item strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .hobby-item p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-weight: 300;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -418,6 +569,26 @@
 
             section {
                 padding: 3rem 0;
+            }
+
+            .personality-dot {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .personality-dot::after {
+                font-size: 1.5rem;
+            }
+
+            .modal-content {
+                padding: 2rem;
+                width: 95%;
+            }
+
+            .modal-content h2 {
+                font-size: 1.5rem;
             }
         }
 
@@ -453,18 +624,17 @@
                 <h2 class="section-title">A Little About Me</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>I’m a developer that loves solving complex problems and building effective solutions, while continuously seeking opportunities to grow. 
-                            My experience spans multiple programming languages and technologies while focusing on clean, efficient, and maintainable code.</p>
+                        <p>Hiya!<p>
                         
-                        <p>Alongside my technical work, I’ve developed strong communication and client-facing skills through my role at Boll and Branch,
-                            where I’ve built relationships, analyzed sales trends, and supported operational and inventory workflows. My blend of people 
-                            skills and technical ability has led me toward an interest in project and product management, where adaptability, clarity, 
-                            and problem-solving are essential.</p>
+                        <p>I’m a naturally curious and adaptable problem-solver who enjoys learning and understanding things from the ground up. 
+                            My experience spans multiple programming languages while focusing on clean, efficient, and maintainable code.</p>
                         
-                        <p>I am currently pursuing my degree in Information Technology with a concentration in Data Analytics 
-                            while taking on projects that challenge me to grow as both a developer and a collaborator. 
-                            I adapt quickly, enjoy learning new techniques and technologies, and thrive in environments where I can bridge 
-                            technology and real-world problems.</p>
+                        <p>Outside of my technical background, I’ve developed strong communication and client-facing skills while working at Boll and Branch. 
+                            Building relationships, analyzing sales trends, and supporting store operations and inventory. </p>
+                        
+                        <p>I am currently pursuing my degree in Information Technology with a concentration in Data Analytics. 
+                            I am currently pursuing my degree in Information Technology with a concentration in Data Analytics, and I’m excited to continue 
+                            growing in environments where I can combine technical skills, problem-solving, and real-world impact.</p>
                     </div>
                     <div class="skills-grid">
                         <div class="skill-item">
@@ -576,6 +746,49 @@
         </section>
     </main>
 
+    <!-- Floating Personality Dot -->
+    <div class="personality-dot" onclick="openModal()"></div>
+
+    <!-- Modal -->
+    <div id="personalityModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2>Beyond the Code!</h2>
+            <p class="modal-subtitle">What I'm into when I'm not working...</p>
+            <ul class="hobby-list">
+                <li class="hobby-item">
+                    <strong>🎮 Gaming</strong>
+                    <p>I enjoy playing my Playstation during my off time. Some games I enjoy are:</p>
+            </p>-Overwatch</p>
+            </p>-Elden Ring & Nightreign</p>
+            </p>-Red Dead Redemption 2</p>
+                </li>
+                
+                <li class="hobby-item">
+                    <strong>📚 Reading</strong>
+                    <p>I like reading manga! I've been more watching anime lately. Some of my favorites are:</p>
+                    </p>-High-Rise Invasion</p>
+                    </p>-SpyxFamily</p>
+                    </p>-Gachiakuta</p>
+                    </p>-One Piece</p>
+                </li>
+                
+                <li class="hobby-item">
+                    <strong>🎵 Music</strong>
+                    <p>I listen to an insane amount of music, I am a fan of any and all generes and dont mind
+                    explore new ones!</p>
+                </li>
+                
+                <li class="hobby-item">
+                    <strong>Creative Outlets</strong>
+                </p>-Drawing on occasion</p>
+                </p>-Customizing Objects</p>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <p>&copy; 2024 Sadaya_Preston.</p>
@@ -583,6 +796,29 @@
     </footer>
 
     <script>
+        function openModal() {
+            document.getElementById('personalityModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('personalityModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('personalityModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
         // Add scroll animation observer
         const observerOptions = {
             threshold: 0.1,
